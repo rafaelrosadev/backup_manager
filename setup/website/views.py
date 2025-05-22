@@ -1,7 +1,7 @@
 # from django.shortcuts import render
 from django.http import HttpResponse
-from website.tasks import executar_backup_teste
+from setup.tasks import executar_backup_teste
 
-def testar_celery(request):
-    executar_backup_teste.delay()
-    return HttpResponse("Tarefa Celery enviada!")
+def testar_celery(request, configuracao_id):
+    executar_backup_teste.delay(configuracao_id=configuracao_id)
+    return HttpResponse(f"Tarefa Celery iniciada para Configuração #{configuracao_id}")

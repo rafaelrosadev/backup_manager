@@ -104,6 +104,7 @@ class ExecucaoBackup(models.Model):
     class Meta:
         verbose_name = _("Execução do backup")
         verbose_name_plural = _("Execuções dos backups")
+        ordering = ['-data_inicio']
 
     def __str__(self):
         return f"{self.configuracao.projeto.nome} - {self.get_status_display()} ({self.data_inicio.strftime('%Y-%m-%d %H:%M')})"
